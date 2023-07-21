@@ -1,0 +1,21 @@
+package com.ecommerce.amazon.controller;
+
+import com.ecommerce.amazon.dto.CartItemsDto;
+import com.ecommerce.amazon.service.CartItemService;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/cart-item")
+public class CartItemController {
+    private final CartItemService cartItemService;
+
+    public CartItemController(CartItemService cartItemService) {
+        this.cartItemService = cartItemService;
+    }
+
+    @PostMapping("/{userId}/add")
+    public String addItemToCart(@RequestBody CartItemsDto cartItems, @PathVariable Long userId) {
+        cartItemService.save(cartItems, userId);
+        return "Saved to Cart";
+    }
+}
