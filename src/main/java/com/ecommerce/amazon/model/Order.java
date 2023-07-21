@@ -5,9 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -23,14 +22,14 @@ public class Order {
     private LocalDate expectedDeliveryDate;
     private Long totalAmount;
     private String shippingAddress;
-    private LocalDate shippingdate;
+    private LocalDate shippingDate;
     private String paymentMethod;
     private boolean isPaid;
     private boolean isShipped;
     private boolean outForDelivery;
     private boolean isDelivered;
     private String username;
-    private String houseno;
+    private String houseNo;
     private String area;
     private int review;
     private String reviewDescription;
@@ -38,9 +37,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "product_id")
-    private Product product;
+    private List<Product> products;
 
     @ManyToOne
     @JoinColumn(name = "address_id")
