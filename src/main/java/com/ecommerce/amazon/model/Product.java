@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
         private String name;
         private String description;
         private Long price;
+        
         private String imageUrl;
 
 
